@@ -9,10 +9,11 @@
         :root {
             --primary: #6C63FF;
             --secondary: #4D44DB;
-            --dark: #2F2E41;
+            --dark: #121212;
+            --darker: #0a0a0a;
             --light: #F8F9FA;
-            --accent: #FF6584;
             --gray: #6C757D;
+            --dark-gray: #2a2a2a;
         }
         
         * {
@@ -23,8 +24,8 @@
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--dark);
+            color: var(--light);
             line-height: 1.6;
         }
         
@@ -36,8 +37,8 @@
         
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--darker);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             position: fixed;
             width: 100%;
             z-index: 100;
@@ -67,7 +68,7 @@
         
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--light);
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -79,7 +80,10 @@
         /* Hero Section */
         .hero {
             padding: 150px 0 100px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-content {
@@ -96,7 +100,7 @@
         .hero-text h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .hero-text h1 span {
@@ -142,6 +146,7 @@
             background-color: transparent;
             color: var(--primary);
             margin-left: 15px;
+            border: 2px solid var(--primary);
         }
         
         .btn-outline:hover {
@@ -161,7 +166,7 @@
         
         .section-title h2 {
             font-size: 36px;
-            color: var(--dark);
+            color: var(--light);
             position: relative;
             display: inline-block;
             padding-bottom: 15px;
@@ -193,7 +198,7 @@
         .about-text h3 {
             font-size: 28px;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .about-text p {
@@ -208,6 +213,7 @@
         .skills h4 {
             margin-bottom: 15px;
             font-size: 20px;
+            color: var(--light);
         }
         
         .skills-list {
@@ -217,21 +223,39 @@
         }
         
         .skill-item {
-            background-color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            font-weight: 500;
-            color: var(--dark);
+            background-color: var(--dark-gray);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .skill-name {
+            font-size: 12px;
+            text-align: center;
+            color: var(--light);
         }
         
         /* Experience Section */
         .experience-item {
-            background-color: white;
+            background-color: var(--dark-gray);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
         }
         
         .experience-header {
@@ -242,7 +266,7 @@
         
         .experience-title h3 {
             font-size: 22px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .experience-title p {
@@ -272,16 +296,16 @@
         }
         
         .education-card {
-            background-color: white;
+            background-color: var(--dark-gray);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .education-card h3 {
             font-size: 20px;
             margin-bottom: 10px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .education-card p {
@@ -302,10 +326,9 @@
         }
         
         .project-card {
-            background-color: white;
+            background-color: var(--dark-gray);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
         }
         
@@ -315,7 +338,7 @@
         
         .project-image {
             height: 200px;
-            background-color: #f0f0f0;
+            background-color: var(--darker);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -329,7 +352,7 @@
         .project-details h3 {
             font-size: 20px;
             margin-bottom: 10px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .project-details p {
@@ -345,16 +368,16 @@
         }
         
         .project-tech span {
-            background-color: #f0f0f0;
+            background-color: var(--darker);
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 12px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            background-color: var(--darker);
         }
         
         .contact-content {
@@ -370,7 +393,7 @@
         .contact-info h3 {
             font-size: 28px;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--light);
         }
         
         .contact-details {
@@ -386,7 +409,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background-color: white;
+            background-color: var(--dark-gray);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -394,7 +417,6 @@
             margin-right: 15px;
             color: var(--primary);
             font-size: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .social-links {
@@ -405,7 +427,7 @@
         .social-link {
             width: 40px;
             height: 40px;
-            background-color: white;
+            background-color: var(--dark-gray);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -413,7 +435,6 @@
             color: var(--primary);
             font-size: 18px;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .social-link:hover {
@@ -423,10 +444,36 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--darker);
+            color: var(--gray);
             padding: 30px 0;
             text-align: center;
+        }
+        
+        /* Learning Section */
+        .learning {
+            background-color: var(--dark-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .learning-icon {
+            font-size: 30px;
+            color: var(--primary);
+            margin-right: 20px;
+        }
+        
+        .learning-text h4 {
+            color: var(--light);
+            margin-bottom: 5px;
+        }
+        
+        .learning-text p {
+            color: var(--gray);
+            font-size: 14px;
         }
         
         /* Responsive */
@@ -469,7 +516,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Hi, I'm <span>Sreelakshmi Manoharan</span></h1>
-                    <p>Experienced Full-Stack Developer with 3 years of expertise in designing, developing, and deploying scalable CRM applications using Angular, Node.js, and MySQL.</p>
+                    <p>Experienced Full-Stack Developer with 3 years of expertise in designing, developing, and deploying scalable CRM applications.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn">Get In Touch</a>
                         <a href="#projects" class="btn btn-outline">View Projects</a>
@@ -497,16 +544,52 @@
                     <div class="skills">
                         <h4>Technical Skills</h4>
                         <div class="skills-list">
-                            <span class="skill-item">Angular</span>
-                            <span class="skill-item">Node.js</span>
-                            <span class="skill-item">MySQL</span>
-                            <span class="skill-item">HTML5</span>
-                            <span class="skill-item">CSS3</span>
-                            <span class="skill-item">JavaScript</span>
-                            <span class="skill-item">TypeScript</span>
-                            <span class="skill-item">RESTful APIs</span>
-                            <span class="skill-item">Git</span>
-                            <span class="skill-item">Postman</span>
+                            <div class="skill-item">
+                                <i class="fab fa-angular skill-icon"></i>
+                                <span class="skill-name">Angular</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-node-js skill-icon"></i>
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon"></i>
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-html5 skill-icon"></i>
+                                <span class="skill-name">HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt skill-icon"></i>
+                                <span class="skill-name">CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js skill-icon"></i>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-code skill-icon"></i>
+                                <span class="skill-name">TypeScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-server skill-icon"></i>
+                                <span class="skill-name">REST API</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-icon"></i>
+                                <span class="skill-name">Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning">
+                        <div class="learning-icon">
+                            <i class="fab fa-flutter"></i>
+                        </div>
+                        <div class="learning-text">
+                            <h4>Currently Learning</h4>
+                            <p>I'm currently upgrading my skills by learning Flutter for cross-platform mobile development.</p>
                         </div>
                     </div>
                 </div>
@@ -587,10 +670,10 @@
                         <h3>E-Commerce Platform</h3>
                         <p>Developed a fully functional e-commerce web app using Angular, Node.js, and MySQL with payment gateway integration.</p>
                         <div class="project-tech">
-                            <span>Angular</span>
-                            <span>Node.js</span>
-                            <span>MySQL</span>
-                            <span>REST API</span>
+                            <span><i class="fab fa-angular"></i> Angular</span>
+                            <span><i class="fab fa-node-js"></i> Node.js</span>
+                            <span><i class="fas fa-database"></i> MySQL</span>
+                            <span><i class="fas fa-server"></i> REST API</span>
                         </div>
                         <a href="#" class="btn">View Details</a>
                     </div>
@@ -603,10 +686,10 @@
                         <h3>CRM Application</h3>
                         <p>Scalable customer relationship management system with advanced analytics and reporting features.</p>
                         <div class="project-tech">
-                            <span>Angular</span>
-                            <span>Node.js</span>
-                            <span>MySQL</span>
-                            <span>TypeScript</span>
+                            <span><i class="fab fa-angular"></i> Angular</span>
+                            <span><i class="fab fa-node-js"></i> Node.js</span>
+                            <span><i class="fas fa-database"></i> MySQL</span>
+                            <span><i class="fas fa-code"></i> TypeScript</span>
                         </div>
                         <a href="#" class="btn">View Details</a>
                     </div>
@@ -619,10 +702,10 @@
                         <h3>Task Management System</h3>
                         <p>Collaborative task management application with real-time updates and team collaboration features.</p>
                         <div class="project-tech">
-                            <span>Angular</span>
-                            <span>Node.js</span>
-                            <span>WebSockets</span>
-                            <span>MySQL</span>
+                            <span><i class="fab fa-angular"></i> Angular</span>
+                            <span><i class="fab fa-node-js"></i> Node.js</span>
+                            <span><i class="fas fa-bolt"></i> WebSockets</span>
+                            <span><i class="fas fa-database"></i> MySQL</span>
                         </div>
                         <a href="#" class="btn">View Details</a>
                     </div>
@@ -687,16 +770,16 @@
                 <div class="contact-form">
                     <form>
                         <div style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <input type="email" placeholder="Your Email" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                            <input type="email" placeholder="Your Email" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Subject" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                            <input type="text" placeholder="Subject" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <textarea placeholder="Your Message" rows="5" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+                            <textarea placeholder="Your Message" rows="5" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);"></textarea>
                         </div>
                         <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
                     </form>
