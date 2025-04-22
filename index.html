@@ -476,6 +476,28 @@
             font-size: 14px;
         }
         
+        /* Form Validation Styles */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error {
+            border-color: #ff6b6b !important;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #4BB543;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content, .about-content, .contact-content {
@@ -580,14 +602,12 @@
                                 <i class="fas fa-server skill-icon"></i>
                                 <span class="skill-name">RPA</span>
                             </div>
-                        
                         </div>
                     </div>
 
                     <div class="skills">
                         <h4>Tools</h4>
                         <div class="skills-list">
-                            
                             <div class="skill-item">
                                 <i class="fab fa-git-alt skill-icon"></i>
                                 <span class="skill-name">Git</span>
@@ -784,18 +804,28 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <div style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
+                    <div id="success-message" class="success-message">
+                        Your message has been sent successfully! I'll get back to you soon.
+                    </div>
+                    <form id="contact-form" action="https://formspree.io/f/https://formspree.io/f/mblorvqb" method="POST">
+                        <div style="margin-bottom: 5px;">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required 
+                                   style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
+                            <div id="name-error" class="error-message">Please enter your name</div>
+                        </div>
+                        <div style="margin-bottom: 5px;">
+                            <input type="email" id="email" name="_replyto" placeholder="Your Email" required 
+                                   style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
+                            <div id="email-error" class="error-message">Please enter a valid email address</div>
+                        </div>
+                        <div style="margin-bottom: 5px;">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" 
+                                   style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <input type="email" placeholder="Your Email" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Subject" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <textarea placeholder="Your Message" rows="5" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);"></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required 
+                                      style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--dark-gray); background-color: var(--dark-gray); color: var(--light);"></textarea>
+                            <div id="message-error" class="error-message">Please enter your message</div>
                         </div>
                         <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
                     </form>
@@ -810,5 +840,100 @@
             <p>&copy; 2025 Sreelakshmi Manoharan. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Form Validation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            // Form validation
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                
+                // Validate name
+                const name = document.getElementById('name');
+                const nameError = document.getElementById('name-error');
+                if (!name.value.trim()) {
+                    name.classList.add('error');
+                    nameError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    name.classList.remove('error');
+                    nameError.style.display = 'none';
+                }
+                
+                // Validate email
+                const email = document.getElementById('email');
+                const emailError = document.getElementById('email-error');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value)) {
+                    email.classList.add('error');
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    email.classList.remove('error');
+                    emailError.style.display = 'none';
+                }
+                
+                // Validate message
+                const message = document.getElementById('message');
+                const messageError = document.getElementById('message-error');
+                if (!message.value.trim()) {
+                    message.classList.add('error');
+                    messageError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    message.classList.remove('error');
+                    messageError.style.display = 'none';
+                }
+                
+                if (!isValid) {
+                    event.preventDefault();
+                    return;
+                }
+                
+                // If form is valid, submit via AJAX
+                event.preventDefault();
+                
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        form.reset();
+                        successMessage.style.display = 'block';
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => {
+                    alert('There was a problem sending your message. Please try again later.');
+                    console.error('Error:', error);
+                });
+            });
+            
+            // Remove error class when user starts typing
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.classList.remove('error');
+                    const errorElement = document.getElementById(`${this.id}-error`);
+                    if (errorElement) {
+                        errorElement.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
